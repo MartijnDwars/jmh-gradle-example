@@ -1,0 +1,25 @@
+plugins {
+  id "com.github.johnrengelman.shadow"
+  id "java"
+}
+
+dependencies {
+  compile project(":library")
+  compile "org.openjdk.jmh:jmh-core:$jmhVersion"
+  annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:$jmhVersion"
+}
+
+jar {
+  manifest {
+    attributes "Main-Class": "org.openjdk.jmh.Main"
+  }
+}
+
+shadowJar {
+  archiveBaseName = "benchmarks"
+  archiveClassifier = null
+  archiveVersion = null
+}
+
+// If you run Gradle without tasks, then run these tasks
+defaultTasks "clean", "shadowJar"

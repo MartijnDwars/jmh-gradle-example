@@ -1,0 +1,10 @@
+pluginManagement {
+  plugins {
+    id "com.github.johnrengelman.shadow" version shadowJarVersion
+  }
+}
+
+rootProject.name = "jmh-example"
+
+include ":library"
+include ":benchmarks"
